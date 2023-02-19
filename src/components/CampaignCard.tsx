@@ -13,7 +13,7 @@ export interface Campaign {
 
 const CampaignCard = ({ campaign }: { campaign: Campaign }) => {
     return (
-        <div key={campaign.title} className="group w-full md:w-auto relative">
+        <div className="group w-full md:w-auto relative">
             <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80">
                 <img
                     src={campaign.imageSrc}

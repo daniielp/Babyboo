@@ -17,15 +17,10 @@
     "@headlessui/react": "1.7.3",
     "@heroicons/react": "2.0.12",
     "@tailwindcss/forms": "0.5.3",
-    "@tanstack/react-table": "8.7.9",
-    "@vercel/analytics": "0.1.5",
-    "clsx": "1.2.1",
-    "concurrently": "7.5.0",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-query": "3.39.3",
-    "zod": "3.19.1"
+    "react-query": "3.39.3"
   },
   "devDependencies": {
     "@tailwindcss/typography": "0.5.8",

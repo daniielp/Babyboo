@@ -37,7 +37,7 @@ const resources = [
 
 function index() {
   const [page, setPage] = useState(1)
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: ['products', page],
     queryFn: () => fetchProducts(page),
     keepPreviousData: true,
@@ -49,7 +49,6 @@ function index() {
       <Heading title="Velkommen Babybob A/S" />
       <section className="container px-4 flex self-stretch justify-between flex-wrap">
         <Grouping icon={<ListIcon />} title="Bestillingsliste" linkText="Gå til bestillingslisten" url="#">
-
           {isLoading ? (<div>Loading...</div>) : (
             <>
               <div className="flex justify-between">
@@ -77,7 +76,7 @@ function index() {
                 )
               }))} />
               <div className="flex justify-center">
-                <button onClick={() => setPage((prevState) => prevState += 1)} className="bg-babyboo-button text-babyboo-rose px-4 py-2 rounded-3xl inline-flex items-center">Vis alle <span className="pl-2"><Chevron /></span></button>
+                <button onClick={() => setPage((prevState) => prevState += 1)} className="bg-babyboo-button hover:bg-babyboo-lightbrown text-babyboo-rose px-4 py-2 rounded-3xl inline-flex items-center">Vis alle <span className="pl-2"><Chevron /></span></button>
               </div>
             </>
           )}
@@ -103,9 +102,9 @@ function index() {
         <Grouping icon={<FavoritIcon />} title="favoritprodukter" linkText="Redigér" url="#">
           {isLoading ? (<div>Loading...</div>) : (
             <>
-              {data!.slice(0, 2).map((product) => (
+              {data!.slice(0, 2).map((product, index) => (
                 <>
-                  <div className="flex p-2 items-center justify-between">
+                  <div className="flex p-2 items-center justify-between" key={product.id + index}>
                     <img src={product.image_url} className="h-12 w-12 boe object-cover" alt={product.name} />
                     <div className="text-left px-4 pr-10">
                       <h3 className="text-md">{product.name}</h3>
@@ -126,14 +125,14 @@ function index() {
       <section className="container px-4 flex self-stretch justify-start flex-wrap py-10 gap-4">
         <SubHeading icon={<Megaphone />} title="Kampagner" />
         {campaigns.map((campaign) => (
-          <CampaignCard campaign={campaign} />
+          <CampaignCard key={campaign.title} campaign={campaign} />
         ))}
       </section>
       <section className="bg-babyboo-lightbrown">
         <div className="py-10  md:px-40 flex flex-col container">
           <h2 className="text-md md:text-xl pb-4 px-4">Dine forhandler ressourcer for <span className="font-bold">DYLAN puslepude</span></h2>
           <div className="flex justify-evenly md:justify-between flex-wrap gap-2">
-            {resources.map((resource) => (<Box resource={resource} />))}
+            {resources.map((resource) => (<Box key={resource.title} resource={resource} />))}
           </div>
         </div>
       </section>

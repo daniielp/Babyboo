@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SearchIcon = (props: { className?: string }) => {
     return (
         <svg viewBox="0 0 12 12" {...props} fill="none" xmlns="http://www.w3.org/2000/svg">

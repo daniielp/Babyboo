@@ -1,6 +1,3 @@
-import { AppProps } from 'next/app'
-import React from 'react'
-
 const Logo = (props: { className: string }) => {
     return (
         <svg width="127" height="47" viewBox="0 0 127 47" {...props} xmlns="http://www.w3.org/2000/svg">

@@ -1,5 +1,3 @@
-import React from 'react'
-
 const SubHeading = (props: { title: string, icon?: JSX.Element }) => {
     return (
         <header className="container">
