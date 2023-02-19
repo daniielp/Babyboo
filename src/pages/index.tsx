@@ -104,7 +104,7 @@ function index() {
             <>
               {data!.slice(0, 2).map((product, index) => (
                 <>
-                  <div className="flex p-2 items-center justify-between" key={product.id + index}>
+                  <div className="flex p-2 items-center justify-between" key={"favorit" + product.id + index}>
                     <img src={product.image_url} className="h-12 w-12 boe object-cover" alt={product.name} />
                     <div className="text-left px-4 pr-10">
                       <h3 className="text-md">{product.name}</h3>
