@@ -49,7 +49,7 @@ function index() {
       <Heading title="Velkommen Babybob A/S" />
       <section className="container px-4 flex self-stretch justify-between flex-wrap">
         <Grouping icon={<ListIcon />} title="Bestillingsliste" linkText="Gå til bestillingslisten" url="#">
-          {isLoading ? (<div>Loading...</div>) : (
+          {isLoading ? (<div key="loading">Loading...</div>) : (
             <>
               <div className="flex justify-between">
                 <p className="bg-babyboo-tag text-babyboo-dark text-sm p-1 rounded">{data?.length} produkter</p>
@@ -57,7 +57,7 @@ function index() {
               </div>
               <Table rows={data!.map(product => ({
                 "product": (
-                  <div className="flex p-2">
+                  <div className="flex p-2" key={"product" + product.id}>
                     <img src={product.image_url} className="h-12 w-12 boe object-cover" alt={product.name} />
                     <div className="pl-2 text-left">
                       <h3 className="text-md">{product.name}</h3>
@@ -66,13 +66,13 @@ function index() {
                   </div>
                 ),
                 "amount": (
-                  <p className="text-sm font-medium p-2">1 stk.</p>
+                  <p key={"amount" + product.id} className="text-sm font-medium p-2">1 stk.</p>
                 ),
                 "discount": (
-                  <p className="text-sm font-medium p-2">-1%</p>
+                  <p key={"discount" + product.id} className="text-sm font-medium p-2">-1%</p>
                 ),
                 "price": (
-                  <p className="text-sm font-medium p-2">{(product.target_og / 10).toFixed(2)} DKK</p>
+                  <p key={"price" + product.id} className="text-sm font-medium p-2">{(product.target_og / 10).toFixed(2)} DKK</p>
                 )
               }))} />
               <div className="flex justify-center">
@@ -83,18 +83,18 @@ function index() {
         </Grouping>
         <Grouping icon={<FolderIcon />} title="Seneste ordrer" linkText="Se alle" url="#">
           {isLoading ? (<div>Loading...</div>) : (
-            <Table rows={Array.from({ length: 8 }, (_, i) => i).map(_ => ({
+            <Table rows={Array.from({ length: 8 }, (_, i) => i).map(i => ({
               "date": (
-                <p className="font-normal">{Intl.DateTimeFormat("da-dk",).format(new Date()).replaceAll(".", "-")}</p>
+                <p key={"date" +i} className="font-normal">{Intl.DateTimeFormat("da-dk",).format(new Date()).replaceAll(".", "-")}</p>
               ),
               "orderId": (
-                <p className="text-sm font-bold p-2">#{Math.floor(100000 + Math.random() * 900000)}</p>
+                <p key={"orderId" +i} className="text-sm font-bold p-2">#{Math.floor(100000 + Math.random() * 900000)}</p>
               ),
               "see order": (
-                <a href="#" className="text-sm font-medium p-2 underline underline-offset-1">Se ordre</a>
+                <a key={"see-order" +i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Se ordre</a>
               ),
-              "palce order": (
-                <a href="#" className="text-sm font-medium p-2 underline underline-offset-1">Genbestil</a>
+              "place order": (
+                <a key={"place-order" +i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Genbestil</a>
               )
             }))} />
           )}

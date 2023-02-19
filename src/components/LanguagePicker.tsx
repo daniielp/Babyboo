@@ -6,7 +6,7 @@ import GlobeIcon from 'src/icons/GlobeIcon'
 
 const languages = [
   { id: 1, name: 'Danmark', Alpha2: "DK" },
-  { id: 1, name: 'United States of America', Alpha2: "US" }
+  { id: 2, name: 'United States of America', Alpha2: "US" }
 ]
 
 const LanguagePicker = () => {

@@ -10,7 +10,7 @@ const Table: React.FC<TableProps> = ({ rows }) => {
                     rows.map((row, index) => (
                         <tr className='even:bg-babyboo' key={"row" + index}>
                             {Object.entries(row).map(([key, value], index) => (
-                                <th key={key + index}>
+                                <th key={key + index + "tablecell"}>
                                     {value}
                                 </th>
                             ))}

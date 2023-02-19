@@ -87,7 +87,7 @@ export default function GlobalNav() {
                 <nav className='flex justify-between items-end'>
                   {links.map((item) => (
                     <a
-                      key={item.name}
+                      key={item.name + "desktop-link"}
                       href={item.href}
                       className="items-center rounded-lg text-sm font-bold px-2 text-white hover:text-gray-300"
                     >
@@ -116,7 +116,7 @@ export default function GlobalNav() {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
+                        <Menu.Item key={item.name + "user-nav"}>
                           {({ active }) => (
                             <a
                               href={item.href}
@@ -168,7 +168,7 @@ export default function GlobalNav() {
                     <nav className="grid gap-6 border-b border-gray-200 pt-4 pb-3">
                       {links.map((item) => (
                         <a
-                          key={item.name}
+                          key={item.name + "mobile-link"}
                           href={item.href}
                           className="-m-3 flex items-center rounded-lg p-3 px-0 hover:bg-white"
                         >
