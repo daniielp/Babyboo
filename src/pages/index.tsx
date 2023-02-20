@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useQuery } from "react-query";
 import AddIcon from "src/icons/AddIcon";
 import ArrowIcon from "src/icons/ArrowIcon";
@@ -44,6 +44,21 @@ function index() {
     refetchOnWindowFocus: false,
   })
 
+  const orders = useMemo(() => Array.from({ length: 8 }, (_, i) => i).map(i => ({
+    "date": (
+      <p key={"date" + i} className="font-normal">{Intl.DateTimeFormat("da-dk",).format(new Date()).replaceAll(".", "-")}</p>
+    ),
+    "orderId": (
+      <p key={"orderId" + i} className="text-sm font-bold p-2">#{Math.floor(100000 + Math.random() * 900000)}</p>
+    ),
+    "see order": (
+      <a key={"see-order" + i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Se ordre</a>
+    ),
+    "place order": (
+      <a key={"place-order" + i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Genbestil</a>
+    )
+  })), [])
+
   return (
     <>
       <Heading title="Velkommen Babybob A/S" />
@@ -83,20 +98,7 @@ function index() {
         </Grouping>
         <Grouping icon={<FolderIcon />} title="Seneste ordrer" linkText="Se alle" url="#">
           {isLoading ? (<div>Loading...</div>) : (
-            <Table rows={Array.from({ length: 8 }, (_, i) => i).map(i => ({
-              "date": (
-                <p key={"date" +i} className="font-normal">{Intl.DateTimeFormat("da-dk",).format(new Date()).replaceAll(".", "-")}</p>
-              ),
-              "orderId": (
-                <p key={"orderId" +i} className="text-sm font-bold p-2">#{Math.floor(100000 + Math.random() * 900000)}</p>
-              ),
-              "see order": (
-                <a key={"see-order" +i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Se ordre</a>
-              ),
-              "place order": (
-                <a key={"place-order" +i} href="#" className="text-sm font-medium p-2 underline underline-offset-1">Genbestil</a>
-              )
-            }))} />
+            <Table rows={orders} />
           )}
         </Grouping>
         <Grouping icon={<FavoritIcon />} title="favoritprodukter" linkText="Redigér" url="#">
